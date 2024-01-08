@@ -44,7 +44,7 @@ export default function App() {
 
   return (
     <>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <View style={styles.appContainer}>
         <Text style={styles.logoContainer}>Fhux</Text>
         <TouchableOpacity onPress={startGoalHandler}>

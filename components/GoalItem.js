@@ -1,11 +1,29 @@
-import { StyleSheet, View, Text, Pressable } from "react-native";
+import { StyleSheet, View, Text, Pressable, Alert } from "react-native";
 
 function GoalItem(props) {
+  function confirmDelete() {
+    Alert.alert(
+      "Xác nhận",
+      "Bạn có chắc chắn muốn xóa mục này không?",
+      [
+        { text: "Hủy" },
+        {
+          text: "Xóa",
+          onPress: () => {
+            props.onDelete(props.id),
+            Alert.alert("Thông báo", "Bạn đã xóa thành công!");
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  }
+
   return (
     <View style={styles.goalItems}>
       <Pressable
         android_ripple={{ color: "rgb(255, 255, 255)" }}
-        onPress={props.onDelete.bind(this, props.id)}
+        onPress={confirmDelete}
         style={({ pressed }) => pressed && styles.pressItem}
       >
         <Text style={styles.goalText}>{props.text}</Text>
@@ -27,7 +45,7 @@ const styles = StyleSheet.create({
   goalText: {
     color: "white",
     fontSize: 15,
-    textTransform: "uppercase",
+    textTransform: "capitalize",
   },
   pressItem: {
     opacity: 0.3,
