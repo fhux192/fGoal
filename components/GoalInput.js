@@ -12,20 +12,27 @@ function GoalInput(props) {
     props.onAddGoal(enteredGoalText);
     setEnteredGoalText("");
   }
+
   return (
     <Modal visible={props.visible} animationType="slide">
       <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.textInput}
-          placeholder="Mục tiêu của bạn là gì?"
-          onChangeText={goalInputHandler}
-          value={enteredGoalText}
-        />
-        <Button title="Thêm" onPress={addGoalHandler} />
+        <View style={styles.box}>
+          <TextInput
+            style={styles.textInput}
+            placeholder="Mục tiêu của bạn là gì?"
+            onChangeText={goalInputHandler}
+            value={enteredGoalText}
+          />
+          <View style={styles.buttonContainer}>
+            <View style={styles.button}>
+              <Button title="Thêm" color="#3e6bc6" onPress={addGoalHandler} />
+            </View>
+            <View style={styles.button}>
+              <Button title="Hủy" color="#c63e3e" onPress={props.onCancel} />
+            </View>
+          </View>
+        </View>
       </View>
-      <Text style={{ color: "rgb(66, 113, 163)", fontSize: 20 }}>
-        Danh sách mục tiêu:
-      </Text>
     </Modal>
   );
 }
@@ -33,20 +40,38 @@ function GoalInput(props) {
 export default GoalInput;
 
 const styles = StyleSheet.create({
-  inputContainer: {
-    flex: 1,
-    flexDirection: "row",
-    justifyContent: "space-between",
+  button: {
+    width: "30%",
+    marginHorizontal: 5,
+  },
+  box: {
+    backgroundColor: "rgb(240, 240, 240)",
+    borderColor: "rgb(60, 90, 123)",
+    borderWidth: 3,
+    borderRadius: 15,
+    justifyContent: "center",
     alignItems: "center",
-    marginBottom: 20,
-    borderBottomWidth: 1,
-    borderBottomColor: "rgb(0, 0, 0)",
+    width: 350,
+    height: 150,
+  },
+  buttonContainer: {
+    marginTop: 15,
+    flexDirection: "row",
+  },
+  inputContainer: {
+    backgroundColor: "#cccccc",
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
   },
   textInput: {
-    borderWidth: 1,
-    borderRadius: 15,
+    borderWidth: 3,
+    borderRadius: 50,
     borderColor: "rgb(0, 0, 0)",
+    marginTop: 12,
     width: "80%",
-    padding: 8,
+    padding: 10,
+    fontSize: 20,
   },
 });

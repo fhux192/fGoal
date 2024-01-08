@@ -18,7 +18,7 @@ export default GoalItem;
 
 const styles = StyleSheet.create({
   goalItems: {
-    marginTop: 20,
+    marginTop: 15,
     borderRadius: 10,
     backgroundColor: "#35689b",
     padding: 10,
@@ -27,6 +27,7 @@ const styles = StyleSheet.create({
   goalText: {
     color: "white",
     fontSize: 15,
+    textTransform: "uppercase",
   },
   pressItem: {
     opacity: 0.3,
