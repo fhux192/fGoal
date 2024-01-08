@@ -1,12 +1,17 @@
 import { useState } from "react";
 
-import { StyleSheet, View, FlatList, Text } from "react-native";
+import { StyleSheet, View, FlatList, Text, Button } from "react-native";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
 
 export default function App() {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
   const [courseGoals, setCourseGoals] = useState([]);
+
+  function startGoalHandler() {
+    setModalIsVisible(true);
+  }
 
   function addGoalHandler(enteredGoalText) {
     setCourseGoals((currentCourseGoals) => [
@@ -24,10 +29,12 @@ export default function App() {
   return (
     <View style={styles.appContainer}>
       <Text style={styles.logoContainer}>Fhux</Text>
-      <GoalInput onAddGoal={addGoalHandler} />
-      <Text style={{ color: "#3366CC", fontSize: 20 }}>
-        Danh sách mục tiêu:
-      </Text>
+      <Button
+        title="Add"
+        color={"rgb(66, 113, 163)"}
+        onPress={startGoalHandler}
+      />
+      <GoalInput visible={modalIsVisible} onAddGoal={addGoalHandler} />
       <View style={styles.goalsContainer}>
         <FlatList
           data={courseGoals}

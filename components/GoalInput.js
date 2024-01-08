@@ -1,4 +1,4 @@
-import { View, TextInput, Button, StyleSheet } from "react-native";
+import { View, TextInput, Button, StyleSheet, Modal, Text } from "react-native";
 import { useState } from "react";
 
 function GoalInput(props) {
@@ -13,15 +13,20 @@ function GoalInput(props) {
     setEnteredGoalText("");
   }
   return (
-    <View style={styles.inputContainer}>
-      <TextInput
-        style={styles.textInput}
-        placeholder="Mục tiêu của bạn là gì?"
-        onChangeText={goalInputHandler}
-        value={enteredGoalText}
-      />
-      <Button title="Thêm" onPress={addGoalHandler} />
-    </View>
+    <Modal visible={props.visible} animationType="slide">
+      <View style={styles.inputContainer}>
+        <TextInput
+          style={styles.textInput}
+          placeholder="Mục tiêu của bạn là gì?"
+          onChangeText={goalInputHandler}
+          value={enteredGoalText}
+        />
+        <Button title="Thêm" onPress={addGoalHandler} />
+      </View>
+      <Text style={{ color: "rgb(66, 113, 163)", fontSize: 20 }}>
+        Danh sách mục tiêu:
+      </Text>
+    </Modal>
   );
 }
 
