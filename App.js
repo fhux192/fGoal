@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { StatusBar } from "expo-status-bar";
+import { Ionicons } from "@expo/vector-icons";
 
 import GoalItem from "./components/GoalItem";
 import GoalInput from "./components/GoalInput";
@@ -47,12 +48,7 @@ export default function App() {
       <StatusBar style="dark" />
       <View style={styles.appContainer}>
         <Text style={styles.logoContainer}>Fhux</Text>
-        <TouchableOpacity onPress={startGoalHandler}>
-          <View style={styles.button}>
-            <Text style={styles.buttonText}>Thêm mục tiêu</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={styles.line} />
+        <View style={styles.line}/>
         <Text style={{ color: "rgb(60, 90, 123)", fontSize: 22 }}>
           Danh sách mục tiêu:
         </Text>
@@ -79,6 +75,12 @@ export default function App() {
               );
             }}
           />
+          <TouchableOpacity onPress={startGoalHandler}>
+            <View style={styles.button}>
+              <Ionicons name="add-circle-sharp" size={30} color="#3e6bc6" />
+              <Text style={styles.buttonText}>Thêm mục tiêu</Text>
+            </View>
+          </TouchableOpacity>
         </View>
       </View>
     </>
@@ -88,22 +90,28 @@ export default function App() {
 const styles = StyleSheet.create({
   appContainer: {
     flex: 1,
-    paddingTop: 70,
-    paddingHorizontal: 16,
+    paddingTop: 100,
+    paddingHorizontal: 15,
     backgroundColor: "#cccccc",
   },
   button: {
-    paddingHorizontal: 5,
-    paddingVertical: 10,
-    width: "100%",
+    alignItems: "center",
+    flexDirection: "row",
+    justifyContent: "center",
+    width: "50%",
     borderWidth: 3,
     borderRadius: 15,
     borderColor: "#3e6bc6",
+    marginBottom: 30,
+    marginRight: 300,
+    paddingHorizontal: 3,
+    paddingVertical: 3,
   },
   buttonText: {
     color: "#3e6bc6",
-    textAlign: "center",
-    fontSize: 20,
+    fontSize: 15,
+    fontWeight: "500",
+    marginHorizontal: 5,
   },
   goalsContainer: {
     flex: 7,
@@ -115,9 +123,9 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   line: {
-    marginTop: 15,
-    marginBottom: 10,
     borderBottomWidth: 3,
     borderBottomColor: "rgb(100, 100, 100)",
+    marginTop: 15,
+    marginBottom: 10,
   },
 });
